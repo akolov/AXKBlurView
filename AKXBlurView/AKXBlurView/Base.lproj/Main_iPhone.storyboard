@@ -45,11 +45,27 @@
                                     <outletCollection property="gestureRecognizers" destination="XPa-sg-IWb" appends="YES" id="1ST-CM-DIB"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiv-42-1Tp">
+                                <rect key="frame" x="80" y="274" width="160" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bqT-Mo-ReD">
+                                <rect key="frame" x="23" y="515" width="274" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onSlide:" destination="vXZ-lx-hvc" eventType="valueChanged" id="SW3-EL-OWQ"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="blurView" destination="d4D-CN-EXi" id="4yF-DJ-3f2"/>
+                        <outlet property="radiusLabel" destination="hiv-42-1Tp" id="mY4-Jj-ROv"/>
+                        <outlet property="slider" destination="bqT-Mo-ReD" id="9Zk-QZ-9Q4"/>
                         <outlet property="tableView" destination="9j4-CV-GE7" id="J0W-LL-ziY"/>
                     </connections>
                 </viewController>

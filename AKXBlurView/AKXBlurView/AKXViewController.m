@@ -19,10 +19,16 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.blurView.blurRadius = 5.0f;
+  self.slider.minimumValue = 0;
+  self.slider.maximumValue = 50.0f;
+  self.slider.value = 5.0f;
+
+  self.blurView.blurRadius = self.slider.value;
   self.blurView.saturation = 1.8f;
   self.blurView.tintColor = [UIColor colorWithWhite:1.0f alpha:0.7f];
   self.blurView.parentView = self.tableView;
+
+  self.radiusLabel.text = [NSString stringWithFormat:@"%.2f", self.slider.value];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +73,13 @@
   cell.backgroundView = imageView;
 
   return cell;
+}
+
+#pragma mark - Actions
+
+- (IBAction)onSlide:(UISlider *)sender {
+  self.blurView.blurRadius = sender.value;
+  self.radiusLabel.text = [NSString stringWithFormat:@"%.2f", sender.value];
 }
 
 @end
