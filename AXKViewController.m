@@ -1,20 +1,20 @@
 //
-//  AKXViewController.m
-//  AKXBlurView
+//  AXKViewController.m
+//  AXKBlurView
 //
 //  Created by Alexander Kolov on 10/10/13.
 //  Copyright (c) 2013 Alexander Kolov. All rights reserved.
 //
 
-#import "AKXViewController.h"
+#import "AXKViewController.h"
 
 
-@interface AKXViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AXKViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
 
-@implementation AKXViewController
+@implementation AXKViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];

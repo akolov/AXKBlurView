@@ -1,16 +1,16 @@
 //
-//  AKXBlurView.m
-//  AKXBlurView
+//  AXKBlurView.m
+//  AXKBlurView
 //
 //  Created by Alexander Kolov on 10/10/13.
 //  Copyright (c) 2013 Alexander Kolov. All rights reserved.
 //
 
-#import "AKXBlurView.h"
+#import "AXKBlurView.h"
 #import "UIImage+ImageEffects.h"
 
 
-@interface AKXBlurView ()
+@interface AXKBlurView ()
 
 @property (nonatomic, weak) CADisplayLink *displayLink;
 @property (nonatomic, strong) UIImageView *imageView;
@@ -24,13 +24,13 @@
 @end
 
 
-@implementation AKXBlurView
+@implementation AXKBlurView
 
 - (void)commonInit {
   self.backgroundColor = nil;
   self.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4f];
 
-  self.queue = dispatch_queue_create("com.alexkolov.AKXBlurView.queue", DISPATCH_QUEUE_SERIAL);
+  self.queue = dispatch_queue_create("com.alexkolov.AXKBlurView.queue", DISPATCH_QUEUE_SERIAL);
   self.semaphore = dispatch_semaphore_create(1);
 
   self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];

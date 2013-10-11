@@ -1,6 +1,6 @@
 //
-//  AKXBlurView.h
-//  AKXBlurView
+//  AXKBlurView.h
+//  AXKBlurView
 //
 //  Created by Alexander Kolov on 10/10/13.
 //  Copyright (c) 2013 Alexander Kolov. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AKXBlurView : UIView
+@interface AXKBlurView : UIView
 
 @property (nonatomic, strong) UIView *parentView;
 @property (nonatomic, strong) UIImage *maskImage;

@@ -1,6 +1,6 @@
 //
-//  AKXBlurViewTests.m
-//  AKXBlurViewTests
+//  AXKBlurViewTests.m
+//  AXKBlurViewTests
 //
 //  Created by Alexander Kolov on 10/10/13.
 //  Copyright (c) 2013 Alexander Kolov. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface AKXBlurViewTests : XCTestCase
+@interface AXKBlurViewTests : XCTestCase
 
 @end
 
-@implementation AKXBlurViewTests
+@implementation AXKBlurViewTests
 
 - (void)setUp
 {

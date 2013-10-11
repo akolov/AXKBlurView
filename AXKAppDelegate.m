@@ -1,14 +1,14 @@
 //
-//  AKXAppDelegate.m
-//  AKXBlurView
+//  AXKAppDelegate.m
+//  AXKBlurView
 //
 //  Created by Alexander Kolov on 10/10/13.
 //  Copyright (c) 2013 Alexander Kolov. All rights reserved.
 //
 
-#import "AKXAppDelegate.h"
+#import "AXKAppDelegate.h"
 
-@implementation AKXAppDelegate
+@implementation AXKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
