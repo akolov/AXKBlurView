@@ -14,5 +14,8 @@
 @property (nonatomic, strong) UIImage *maskImage;
 @property (nonatomic, assign) CGFloat blurRadius;
 @property (nonatomic, assign) CGFloat saturation;
+@property (nonatomic, assign) BOOL dynamic;
+
+- (void)update;
 
 @end

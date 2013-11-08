@@ -18,7 +18,7 @@
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
 - (void)commonInit;
-- (void)blurBackground;
+- (void)update;
 - (void)onDisplayLink:(CADisplayLink *)displayLink;
 
 @end
@@ -53,18 +53,23 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
   if (newSuperview) {
-    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink:)];
-    displayLink.frameInterval = 2;
-    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    if (self.dynamic) {
+      CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink:)];
+      displayLink.frameInterval = 2;
+      [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 
-    self.displayLink = displayLink;
+      self.displayLink = displayLink;
+    }
+    else {
+      [self update];
+    }
   }
   else {
     [self.displayLink invalidate];
   }
 }
 
-- (void)blurBackground {
+- (void)update {
   if (!self.parentView) {
     return;
   }
@@ -77,7 +82,7 @@
 
   UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.25f);
   CGContextTranslateCTM(UIGraphicsGetCurrentContext(), -self.frame.origin.x, -self.frame.origin.y);
-  [self.parentView drawViewHierarchyInRect:self.parentView.frame afterScreenUpdates:YES];
+  [self.parentView drawViewHierarchyInRect:self.parentView.frame afterScreenUpdates:NO];
   snapshot = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
 
@@ -95,7 +100,7 @@
 }
 
 - (void)onDisplayLink:(CADisplayLink *)displayLink {
-  [self blurBackground];
+  [self update];
 }
 
 @end
