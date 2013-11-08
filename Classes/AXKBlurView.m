@@ -74,7 +74,7 @@
     return;
   }
 
-  if (dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW) != 0) {
+  if (self.dynamic && dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW) != 0) {
     return;
   }
 
@@ -86,17 +86,25 @@
   snapshot = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
 
-  dispatch_async(self.queue, ^{
-    snapshot = [snapshot applyBlurWithRadius:self.blurRadius
-                                   tintColor:self.tintColor
-                       saturationDeltaFactor:self.saturation
-                                   maskImage:self.maskImage];
+  if (self.dynamic) {
+    dispatch_async(self.queue, ^{
+      snapshot = [snapshot applyBlurWithRadius:self.blurRadius
+                                     tintColor:self.tintColor
+                         saturationDeltaFactor:self.saturation
+                                     maskImage:self.maskImage];
 
-    dispatch_sync(dispatch_get_main_queue(), ^{
-      self.imageView.image = snapshot;
-      dispatch_semaphore_signal(self.semaphore);
+      dispatch_sync(dispatch_get_main_queue(), ^{
+        self.imageView.image = snapshot;
+        dispatch_semaphore_signal(self.semaphore);
+      });
     });
-  });
+  }
+  else {
+    self.imageView.image = [snapshot applyBlurWithRadius:self.blurRadius
+                                               tintColor:self.tintColor
+                                   saturationDeltaFactor:self.saturation
+                                               maskImage:self.maskImage];
+  }
 }
 
 - (void)onDisplayLink:(CADisplayLink *)displayLink {
