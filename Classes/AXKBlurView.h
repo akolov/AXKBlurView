@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 Alexander Kolov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 
 @interface AXKBlurView : UIView
 
+@property (nonatomic, strong, readonly) UIImageView *blurView;
 @property (nonatomic, strong) UIView *parentView;
 @property (nonatomic, strong) UIImage *maskImage;
 @property (nonatomic, assign) CGFloat blurRadius;

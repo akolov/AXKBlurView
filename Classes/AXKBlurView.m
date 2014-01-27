@@ -13,7 +13,7 @@
 @interface AXKBlurView ()
 
 @property (nonatomic, weak) CADisplayLink *displayLink;
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImageView *blurView;
 @property (nonatomic, strong) dispatch_queue_t queue;
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
@@ -33,9 +33,9 @@
   self.queue = dispatch_queue_create("com.alexkolov.AXKBlurView.queue", DISPATCH_QUEUE_SERIAL);
   self.semaphore = dispatch_semaphore_create(1);
 
-  self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-  self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  [self addSubview:self.imageView];
+  self.blurView = [[UIImageView alloc] initWithFrame:self.bounds];
+  self.blurView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+  [self addSubview:self.blurView];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -59,9 +59,6 @@
       [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 
       self.displayLink = displayLink;
-    }
-    else {
-      [self update];
     }
   }
   else {
@@ -94,13 +91,13 @@
                                      maskImage:self.maskImage];
 
       dispatch_sync(dispatch_get_main_queue(), ^{
-        self.imageView.image = snapshot;
+        self.blurView.image = snapshot;
         dispatch_semaphore_signal(self.semaphore);
       });
     });
   }
   else {
-    self.imageView.image = [snapshot applyBlurWithRadius:self.blurRadius
+    self.blurView.image = [snapshot applyBlurWithRadius:self.blurRadius
                                                tintColor:self.tintColor
                                    saturationDeltaFactor:self.saturation
                                                maskImage:self.maskImage];
