@@ -28,6 +28,7 @@
 
 - (void)commonInit {
   self.backgroundColor = nil;
+  self.frameInterval = 2;
   self.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4f];
 
   self.queue = dispatch_queue_create("com.alexkolov.AXKBlurView.queue", DISPATCH_QUEUE_SERIAL);
@@ -55,7 +56,7 @@
   if (newSuperview) {
     if (self.dynamic) {
       CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(onDisplayLink:)];
-      displayLink.frameInterval = 2;
+      displayLink.frameInterval = self.frameInterval;
       [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 
       self.displayLink = displayLink;
@@ -98,14 +99,21 @@
   }
   else {
     self.blurView.image = [snapshot applyBlurWithRadius:self.blurRadius
-                                               tintColor:self.tintColor
-                                   saturationDeltaFactor:self.saturation
-                                               maskImage:self.maskImage];
+                                              tintColor:self.tintColor
+                                  saturationDeltaFactor:self.saturation
+                                              maskImage:self.maskImage];
   }
 }
 
 - (void)onDisplayLink:(CADisplayLink *)displayLink {
   [self update];
+}
+
+#pragma mark - Getters and Setters
+
+- (void)setFrameInterval:(NSInteger)frameInterval {
+  _frameInterval = frameInterval;
+  self.displayLink.frameInterval = frameInterval;
 }
 
 @end
