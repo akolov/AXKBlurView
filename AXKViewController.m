@@ -8,11 +8,9 @@
 
 #import "AXKViewController.h"
 
-
 @interface AXKViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
-
 
 @implementation AXKViewController
 
@@ -64,7 +62,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-  NSString *imageName = [NSString stringWithFormat:@"%d.jpg", indexPath.row];
+  NSString *imageName = [NSString stringWithFormat:@"%ld.jpg", (long)indexPath.row];
 
   UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.bounds];
   imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

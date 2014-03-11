@@ -1,6 +1,7 @@
 /*
  File: UIImage+ImageEffects.m
- Abstract: This is a category of UIImage that adds methods to apply blur and tint effects to an image. This is the code you’ll want to look out to find out how to use vImage to efficiently calculate a blur.
+ Abstract: This is a category of UIImage that adds methods to apply blur and tint effects to an image.
+ This is the code you’ll want to look out to find out how to use vImage to efficiently calculate a blur.
  Version: 1.0
 
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -96,11 +97,8 @@
 #import "UIImage+ImageEffects.h"
 
 @import Accelerate;
-#import <float.h>
-
 
 @implementation UIImage (ImageEffects)
-
 
 - (UIImage *)applyLightEffect
 {
@@ -127,7 +125,7 @@
 {
   const CGFloat EffectColorAlpha = 0.6;
   UIColor *effectColor = tintColor;
-  int componentCount = CGColorGetNumberOfComponents(tintColor.CGColor);
+  size_t componentCount = CGColorGetNumberOfComponents(tintColor.CGColor);
   if (componentCount == 2) {
     CGFloat b;
     if ([tintColor getWhite:&b alpha:NULL]) {
@@ -144,11 +142,12 @@
 }
 
 
-- (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
-{
+- (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor
+           saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage {
   // Check pre-conditions.
   if (self.size.width < 1 || self.size.height < 1) {
-    NSLog (@"*** error: invalid size: (%.2f x %.2f). Both dimensions must be >= 1: %@", self.size.width, self.size.height, self);
+    NSLog (@"*** error: invalid size: (%.2f x %.2f). Both dimensions must be >= 1: %@",
+           self.size.width, self.size.height, self);
     return nil;
   }
   if (!self.CGImage) {
@@ -200,7 +199,7 @@
       // ... if d is odd, use three box-blurs of size 'd', centered on the output pixel.
       //
       CGFloat inputRadius = blurRadius * [[UIScreen mainScreen] scale];
-      NSUInteger radius = floor(inputRadius * 3. * sqrt(2 * M_PI) / 4 + 0.5);
+      uint32_t radius = floor(inputRadius * 3. * sqrt(2 * M_PI) / 4 + 0.5);
       if (radius % 2 != 1) {
         radius += 1; // force radius to be odd so that the three box-blur methodology works.
       }
@@ -224,11 +223,13 @@
         saturationMatrix[i] = (int16_t)roundf(floatingPointSaturationMatrix[i] * divisor);
       }
       if (hasBlur) {
-        vImageMatrixMultiply_ARGB8888(&effectOutBuffer, &effectInBuffer, saturationMatrix, divisor, NULL, NULL, kvImageNoFlags);
+        vImageMatrixMultiply_ARGB8888(&effectOutBuffer, &effectInBuffer, saturationMatrix, divisor, NULL, NULL,
+                                      kvImageNoFlags);
         effectImageBuffersAreSwapped = YES;
       }
       else {
-        vImageMatrixMultiply_ARGB8888(&effectInBuffer, &effectOutBuffer, saturationMatrix, divisor, NULL, NULL, kvImageNoFlags);
+        vImageMatrixMultiply_ARGB8888(&effectInBuffer, &effectOutBuffer, saturationMatrix, divisor, NULL, NULL,
+                                      kvImageNoFlags);
       }
     }
     if (!effectImageBuffersAreSwapped)

@@ -31,11 +31,8 @@
 		FA3D9CB31807F0450073E93B /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3D9CA91807F0450073E93B /* 7.jpg */; };
 		FA3D9CB41807F0450073E93B /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3D9CAA1807F0450073E93B /* 8.jpg */; };
 		FA3D9CB51807F0450073E93B /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3D9CAB1807F0450073E93B /* 9.jpg */; };
-		FA3D9CB91807F0580073E93B /* AXKBlurView-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3D9CB61807F0580073E93B /* AXKBlurView-Info.plist */; };
-		FA3D9CBA1807F0580073E93B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA3D9CB71807F0580073E93B /* InfoPlist.strings */; };
 		FA3D9CBC1807F06C0073E93B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3D9CBB1807F06C0073E93B /* Images.xcassets */; };
 		FAE391C91807EC5D00C39D22 /* AXKBlurViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE391C51807EC5D00C39D22 /* AXKBlurViewTests.m */; };
-		FAE391CA1807EC5D00C39D22 /* AXKBlurViewTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAE391C61807EC5D00C39D22 /* AXKBlurViewTests-Info.plist */; };
 		FAE391CB1807EC5D00C39D22 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAE391C71807EC5D00C39D22 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +79,7 @@
 		FA3D9CB61807F0580073E93B /* AXKBlurView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AXKBlurView-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FA3D9CB81807F0580073E93B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		FA3D9CBB1807F06C0073E93B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
+		FACC940518CF2FA400BDC979 /* AXKBlurView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AXKBlurView.podspec; sourceTree = SOURCE_ROOT; };
 		FAE391C51807EC5D00C39D22 /* AXKBlurViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXKBlurViewTests.m; sourceTree = "<group>"; };
 		FAE391C61807EC5D00C39D22 /* AXKBlurViewTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AXKBlurViewTests-Info.plist"; sourceTree = "<group>"; };
 		FAE391C81807EC5D00C39D22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -163,6 +161,7 @@
 		FA36FD561806DBD500A82D61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FACC940518CF2FA400BDC979 /* AXKBlurView.podspec */,
 				FA3D9CB61807F0580073E93B /* AXKBlurView-Info.plist */,
 				FA3D9CB71807F0580073E93B /* InfoPlist.strings */,
 				FA3D9C931807F0170073E93B /* main.m */,
@@ -262,7 +261,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AXK;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Alexander Kolov";
 				TargetAttributes = {
 					FA36FD6F1806DBD500A82D61 = {
@@ -298,7 +297,6 @@
 				FA3D9C9F1807F02F0073E93B /* Main_iPad.storyboard in Resources */,
 				FA3D9CB11807F0450073E93B /* 5.jpg in Resources */,
 				FA3D9CB31807F0450073E93B /* 7.jpg in Resources */,
-				FA3D9CBA1807F0580073E93B /* InfoPlist.strings in Resources */,
 				FA3D9CAC1807F0450073E93B /* 0.jpg in Resources */,
 				FA3D9CBC1807F06C0073E93B /* Images.xcassets in Resources */,
 				FA3D9CB41807F0450073E93B /* 8.jpg in Resources */,
@@ -308,7 +306,6 @@
 				FA3D9CA01807F02F0073E93B /* Main_iPhone.storyboard in Resources */,
 				FA3D9CB01807F0450073E93B /* 4.jpg in Resources */,
 				FA3D9CAF1807F0450073E93B /* 3.jpg in Resources */,
-				FA3D9CB91807F0580073E93B /* AXKBlurView-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +313,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE391CA1807EC5D00C39D22 /* AXKBlurViewTests-Info.plist in Resources */,
 				FAE391CB1807EC5D00C39D22 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +390,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -434,7 +429,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -493,7 +487,6 @@
 		FA36FD851806DBD500A82D61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AXKBlurView.app/AXKBlurView";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -516,7 +509,6 @@
 		FA36FD861806DBD500A82D61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AXKBlurView.app/AXKBlurView";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

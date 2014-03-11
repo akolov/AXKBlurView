@@ -8,16 +8,15 @@
 
 @import UIKit;
 
-
 @interface AXKBlurView : UIView
 
 @property (nonatomic, strong, readonly) UIImageView *blurView;
-@property (nonatomic, strong) UIView *parentView;
 @property (nonatomic, strong) UIImage *maskImage;
+@property (nonatomic, strong) UIView *parentView;
+@property (nonatomic, assign, getter = isDynamic) BOOL dynamic;
 @property (nonatomic, assign) CGFloat blurRadius;
 @property (nonatomic, assign) CGFloat saturation;
 @property (nonatomic, assign) NSInteger frameInterval;
-@property (nonatomic, assign) BOOL dynamic;
 
 - (void)update;
 

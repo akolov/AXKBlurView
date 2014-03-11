@@ -9,20 +9,18 @@
 #import "AXKBlurView.h"
 #import "UIImage+ImageEffects.h"
 
-
 @interface AXKBlurView ()
 
-@property (nonatomic, weak) CADisplayLink *displayLink;
-@property (nonatomic, strong) UIImageView *blurView;
 @property (nonatomic, strong) dispatch_queue_t queue;
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
+@property (nonatomic, strong) UIImageView *blurView;
+@property (nonatomic, weak) CADisplayLink *displayLink;
 
 - (void)commonInit;
 - (void)update;
 - (void)onDisplayLink:(CADisplayLink *)displayLink;
 
 @end
-
 
 @implementation AXKBlurView
 
